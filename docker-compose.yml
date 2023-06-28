@@ -1,0 +1,56 @@
+version: "3.8"
+services:
+  web:
+    build:
+      context: ./front
+      dockerfile: Dockerfile
+    volumes:
+      - ./front:/app
+    command: npm run dev
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_AWS_COGNITO_REGION: us-east-1
+      NEXT_PUBLIC_AWS_USER_POOLS_ID: us-east-1_ZLKZEKUTp
+      NEXT_PUBLIC_AWS_USER_POOLS_WEB_CLIENT_ID: 6lnu740ovg883o4bekafvvvo67
+      NEXT_PUBLIC_API_URL: http://localhost:4500
+  api:
+    container_name: "api"
+    environment:
+      AWS_COGNITO_USER_POOL_ID: us-east-1_ZLKZEKUTp
+      AWS_COGNITO_CLIENT_ID: 6lnu740ovg883o4bekafvvvo67
+      AWS_COGNITO_AUTHORITY: https://cognito-idp.us-east-1.amazonaws.com/us-east-1_ZLKZEKUTp
+
+      DATABASE_URL: "mysql://user:user@db:3306/xepelin?schema=public"
+      PORT: 4500
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      target: development
+    command: npm run start:dev
+    ports:
+      - 4500:4500
+    networks:
+      - local-network
+    volumes:
+      - ./backend:/usr/src/app
+    restart: unless-stopped
+    depends_on:
+      - db
+  db:
+    container_name: "db"
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: xepelin
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+    volumes:
+      - db:/var/lib/mysql
+    networks:
+      - local-network
+networks:
+  local-network:
+volumes:
+  db:
