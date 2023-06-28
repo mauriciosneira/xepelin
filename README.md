@@ -7,10 +7,10 @@
 2. El Sistema completo debe poder levantarse en local mediante el uso de docker-compose.
 
 ### Consideraciones
-Si se Desea utilizar docker compose simplemente debe de seguir esta guía, de otro modo dentro de cada proyecto va a poder encontrar un Read.me particular para trabajar en cada uno de ellos sin la necesidad de la utilización de docker.
+Si se desea utilizar docker compose simplemente debe de seguir esta guía, de otro modo dentro de cada proyecto va a poder encontrar un Read.me particular para trabajar en cada uno de ellos sin la necesidad de la utilización de docker.
 
-- [Frontend](https:/// "Frontend")
-- [Backend](https:/// "Backend")
+- [Frontend](https://github.com/mauriciosneira/xepelin/tree/main/front "Frontend")
+- [Backend](https://github.com/mauriciosneira/xepelin/tree/main/backend "Backend")
 
 ### Puesta en marcha
 
