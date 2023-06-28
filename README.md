@@ -6,7 +6,7 @@
 1. Debes asegurarte de que el código sea de alta calidad, fácil de mantener y cumpla con los principios de diseño y buenas prácticas
 2. El Sistema completo debe poder levantarse en local mediante el uso de docker-compose.
 
-### Consideraciones
+### Consideraciones con respecto al desafío
 Si se desea utilizar docker compose simplemente debe de seguir esta guía, de otro modo dentro de cada proyecto va a poder encontrar un Read.me particular para trabajar en cada uno de ellos sin la necesidad de la utilización de docker.
 
 - [Frontend](https://github.com/mauriciosneira/xepelin/tree/main/front "Frontend")
