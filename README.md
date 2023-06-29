@@ -27,7 +27,7 @@ $ mysql -h localhost -u user -puser
 ```
 3 - Cree las tablas necesarias
 ```bash
-$docker-compose exec api npx prisma migrate dev --name init
+$docker-compose exec api npx prisma db push
 ```
 Nos conectamos al contenedor con la instrucción docker-compose exec api y luego podemos ejecutar el comando que deseemos.
 

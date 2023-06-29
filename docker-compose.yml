@@ -5,7 +5,8 @@ services:
       context: ./front
       dockerfile: Dockerfile
     volumes:
-      - ./front:/app
+      - ./front:/usr/src/app
+      - /usr/src/app/node_modules
     command: npm run dev
     ports:
       - "3000:3000"
@@ -26,7 +27,6 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-      target: development
     command: npm run start:dev
     ports:
       - 4500:4500
@@ -34,6 +34,7 @@ services:
       - local-network
     volumes:
       - ./backend:/usr/src/app
+      - /usr/src/app/node_modules
     restart: unless-stopped
     depends_on:
       - db
@@ -52,5 +53,6 @@ services:
       - local-network
 networks:
   local-network:
+    driver: bridge
 volumes:
   db:
